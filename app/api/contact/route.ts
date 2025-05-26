@@ -71,7 +71,7 @@ export async function POST(request: NextRequest) {
           
           <p>Hi ${name},</p>
           
-          <p>Thank you for reaching out! We've received your message and will get back to you as soon as possible.</p>
+          <p>Thank you for reaching out! I've received your message and will get back to you as soon as possible.</p>
           
           <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h3 style="margin-top: 0; color: #555;">Your message:</h3>
@@ -80,7 +80,7 @@ export async function POST(request: NextRequest) {
             </div>
           </div>
           
-          <p>Best regards,<br>Your Team</p>
+          <p>Best regards,<br>Shubh Shubhankar</p>
           
           <hr style="margin: 30px 0; border: none; border-top: 1px solid #ddd;">
           <p style="color: #666; font-size: 12px;">
