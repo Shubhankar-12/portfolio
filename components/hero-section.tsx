@@ -155,19 +155,6 @@ export default function HeroSection() {
                 <Linkedin className="h-5 w-5" />
               </Button>
             </Link>
-            <Link
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full hover:bg-primary/10 hover:text-primary"
-              >
-                <Twitter className="h-5 w-5" />
-              </Button>
-            </Link>
           </motion.div>
         </motion.div>
 

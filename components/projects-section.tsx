@@ -24,7 +24,7 @@ const projects = [
     image: "./resume-rocket-img.png",
     tags: ["Next.js", "Node.js", "MongoDB", "Tailwind CSS", "AWS S3"],
     github: "https://github.com/Shubhankar-12/resume-grader-frontend",
-    demo: "https://example.com",
+
     longDescription:
       "Resume Rocket is a full-stack application that allows users to upload resumes, get AI-based feedback, and tailor resumes for specific job descriptions. It includes login with GitHub, resume upload to S3, intelligent resume parsing, grading, and cover letter generation using GPT.",
     icon: "🚀",
@@ -36,7 +36,7 @@ const projects = [
     image: "./shopezy-img.png",
     tags: ["Electron.js", "JavaScript", "SQLite3", "WebGL", "Barcode Scanner"],
     github: "https://github.com/Jatin2672/Shopezy2.0",
-    demo: "https://example.com",
+
     longDescription:
       "Shopezy 2.0 is a comprehensive desktop and mobile application designed to assist small businesses, such as grocery and fashion stores, in managing invoices, stock, and analytics. The platform offers features like automatic GST calculations, profit analysis, and a built-in barcode scanner powered by Google Machine Learning. Developed using Electron.js for cross-platform desktop support and Android Studio for mobile deployment, it ensures real-time graph plotting with WebGL and operates efficiently without the need for an active internet connection.",
     icon: "🧾",
@@ -48,7 +48,7 @@ const projects = [
     image: "./quizzy-img.png",
     tags: ["React", "Redux", "Firebase", "Tailwind CSS"],
     github: "https://github.com/Shubhankar-12/quizzy-frontend",
-    demo: "https://example.com",
+
     longDescription:
       "Quizzy is a React-based app where users can take topic-wise quizzes. It features Firebase Authentication, user profiles, leaderboards, a quiz timer, and smooth navigation. Built with Tailwind CSS for a mobile-first experience.",
     icon: "🧠",
@@ -203,16 +203,18 @@ export default function ProjectsSection() {
                         Code
                       </Button>
                     </Link>
-                    <Link
-                      href={project.demo}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <Button size="sm" className="gap-2">
-                        <ExternalLink className="h-4 w-4" />
-                        Live Demo
-                      </Button>
-                    </Link>
+                    {project.demo && (
+                      <Link
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button size="sm" className="gap-2">
+                          <ExternalLink className="h-4 w-4" />
+                          Live Demo
+                        </Button>
+                      </Link>
+                    )}
                   </CardFooter>
                 </Card>
               </motion.div>
@@ -264,16 +266,18 @@ export default function ProjectsSection() {
                     View Code
                   </Button>
                 </Link>
-                <Link
-                  href={selectedProject.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button className="gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Live Demo
-                  </Button>
-                </Link>
+                {selectedProject.demo && (
+                  <Link
+                    href={selectedProject.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button className="gap-2">
+                      <ExternalLink className="h-4 w-4" />
+                      Live Demo
+                    </Button>
+                  </Link>
+                )}
               </div>
             </>
           )}

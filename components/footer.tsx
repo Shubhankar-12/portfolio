@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -24,7 +25,13 @@ export default function Footer() {
               className="flex items-center gap-2"
             >
               <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
-                <span className="text-white font-bold text-xl">S</span>
+                <Image
+                  src="/logo.png"
+                  alt="Logo"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
               </div>
               <span className="font-bold text-xl">Shubh</span>
             </motion.div>
