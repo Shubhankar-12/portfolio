@@ -114,13 +114,17 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 0.8 }}
             className="flex flex-wrap gap-4 justify-center lg:justify-start"
           >
-            <Button size="lg" className="group">
-              View Projects
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </Button>
-            <Button size="lg" variant="outline">
-              Contact Me
-            </Button>
+            <Link href="/#projects">
+              <Button size="lg" className="group">
+                View Projects
+                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+            <Link href="/#contact">
+              <Button size="lg" variant="outline">
+                Contact Me
+              </Button>
+            </Link>
           </motion.div>
 
           <motion.div

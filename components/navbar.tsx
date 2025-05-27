@@ -30,6 +30,16 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleResumeDownload = () => {
+    // dowload resume from ./public/resume.pdf
+    const link = document.createElement("a");
+    link.href = "/resume.pdf"; // Adjust the path as necessary
+    link.download = "Shubh_Resume.pdf"; // Name of the downloaded file
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -87,7 +97,10 @@ export default function Navbar() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.3, delay: 0.6 }}
             >
-              <Button className="bg-primary hover:bg-primary/80 text-white">
+              <Button
+                onClick={handleResumeDownload}
+                className="bg-primary hover:bg-primary/80 text-white"
+              >
                 Resume
               </Button>
             </motion.div>
@@ -148,7 +161,10 @@ export default function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.2, delay: 0.3 }}
                 >
-                  <Button className="w-full bg-primary hover:bg-primary/80 text-white">
+                  <Button
+                    onClick={handleResumeDownload}
+                    className="w-full bg-primary hover:bg-primary/80 text-white"
+                  >
                     Resume
                   </Button>
                 </motion.div>
