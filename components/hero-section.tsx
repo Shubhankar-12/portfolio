@@ -170,6 +170,7 @@ export default function HeroSection() {
               <Image
                 src="./main.png"
                 alt="Shubh Shubhankar"
+                priority
                 width={400}
                 height={400}
                 className="w-full h-full object-cover"

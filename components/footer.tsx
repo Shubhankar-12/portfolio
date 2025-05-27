@@ -26,6 +26,7 @@ export default function Footer() {
             >
               <div className="relative w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
                 <Image
+                  priority
                   src="/logo.png"
                   alt="Logo"
                   width={40}
