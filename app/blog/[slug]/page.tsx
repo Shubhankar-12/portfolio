@@ -11,6 +11,7 @@ import Link from "next/link";
 import Image from "next/image";
 import BlogAuthor from "@/components/blog/blog-author";
 import RelatedPosts from "@/components/blog/related-posts";
+import FloatingElements from "@/components/floating-elements";
 
 export default function BlogPostPage() {
   const params = useParams();
@@ -104,7 +105,8 @@ export default function BlogPostPage() {
 
   return (
     <section className="py-32 relative overflow-hidden">
-      {/* Background elements */}
+      <FloatingElements />
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/3 w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 rounded-full bg-quaternary/5 blur-3xl"></div>

@@ -130,7 +130,7 @@ export default function ExperienceSection() {
               >
                 {/* Timeline dot */}
                 <motion.div
-                  className=" md:block absolute top-6 w-10 h-10 rounded-full bg-background border-4 border-primary z-10 flex items-center justify-center text-xl"
+                  className=" md:block absolute top-6 w-10 h-10 rounded-full bg-background border-4 border-primary z-10 grid place-items-center text-xl"
                   style={{
                     left: index % 2 === 0 ? "-20px" : "auto",
                     right: index % 2 === 1 ? "auto" : "-20px",
@@ -143,12 +143,14 @@ export default function ExperienceSection() {
                   {exp.icon}
                 </motion.div>
 
-                <Card className="border border-primary/20 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 overflow-hidden group">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <CardHeader className="flex flex-row items-center gap-4 pb-2">
-                    <div className="md:hidden w-10 h-10 rounded-full bg-primary/10 text-xl grid place-items-center">
+                <Card className="border border-primary/20 hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:shadow-primary/20 overflow-hidden group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform -skew-x-12"></div>
+
+                  <CardHeader className="flex flex-row items-start gap-4 pb-3 relative z-10">
+                    {/* <div className="md:hidden w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-xl border-2 border-primary/30 group-hover:border-primary/60 transition-colors duration-300">
                       {exp.icon}
-                    </div>
+                    </div> */}
                     <div>
                       <CardTitle className="text-xl group-hover:text-primary transition-colors duration-300">
                         {exp.title}

@@ -1,33 +1,36 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, useInView } from "framer-motion"
-import { Input } from "@/components/ui/input"
-import { Search } from "lucide-react"
-import BlogCard from "@/components/blog/blog-card"
-import { blogPosts } from "@/lib/blog-data"
-import BlogPagination from "@/components/blog/blog-pagination"
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import BlogCard from "@/components/blog/blog-card";
+import { blogPosts } from "@/lib/blog-data";
+import BlogPagination from "@/components/blog/blog-pagination";
+import FloatingElements from "@/components/floating-elements";
 
 export default function BlogPage() {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, { once: false, amount: 0.2 })
-  const [searchQuery, setSearchQuery] = useState("")
-  const [currentPage, setCurrentPage] = useState(1)
-  const postsPerPage = 6
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 6;
 
   // Filter posts based on search query
   const filteredPosts = blogPosts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       post.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.categories.some((category) => category.toLowerCase().includes(searchQuery.toLowerCase())),
-  )
+      post.categories.some((category) =>
+        category.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+  );
 
   // Calculate pagination
-  const indexOfLastPost = currentPage * postsPerPage
-  const indexOfFirstPost = indexOfLastPost - postsPerPage
-  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost)
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage)
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -37,7 +40,7 @@ export default function BlogPage() {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -46,11 +49,12 @@ export default function BlogPage() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <section className="py-32 relative overflow-hidden">
-      {/* Background elements */}
+      <FloatingElements />
+
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-1/3 w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
         <div className="absolute bottom-1/3 left-1/3 w-80 h-80 rounded-full bg-quaternary/5 blur-3xl"></div>
@@ -75,7 +79,8 @@ export default function BlogPage() {
               />
             </h1>
             <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
-              Thoughts, tutorials, and insights on web development, design, and technology.
+              Thoughts, tutorials, and insights on web development, design, and
+              technology.
             </p>
           </motion.div>
 
@@ -89,8 +94,8 @@ export default function BlogPage() {
                 className="pl-10 pr-4 py-6 rounded-full border-primary/20 focus:border-primary/50 focus:ring-2 focus:ring-primary/30"
                 value={searchQuery}
                 onChange={(e) => {
-                  setSearchQuery(e.target.value)
-                  setCurrentPage(1) // Reset to first page on new search
+                  setSearchQuery(e.target.value);
+                  setCurrentPage(1); // Reset to first page on new search
                 }}
               />
 
@@ -114,7 +119,10 @@ export default function BlogPage() {
 
           {/* Blog posts grid */}
           {currentPosts.length > 0 ? (
-            <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+              variants={containerVariants}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
               {currentPosts.map((post, index) => (
                 <motion.div key={post.slug} variants={itemVariants}>
                   <BlogCard post={post} index={index} />
@@ -130,18 +138,27 @@ export default function BlogPage() {
                 <span className="text-3xl">🧐</span>
               </div>
               <h3 className="text-xl font-bold mb-2">No posts found</h3>
-              <p className="text-foreground/70">Try adjusting your search or check back later for new content.</p>
+              <p className="text-foreground/70">
+                Try adjusting your search or check back later for new content.
+              </p>
             </motion.div>
           )}
 
           {/* Pagination */}
           {filteredPosts.length > postsPerPage && (
-            <motion.div variants={itemVariants} className="mt-12 flex justify-center">
-              <BlogPagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+            <motion.div
+              variants={itemVariants}
+              className="mt-12 flex justify-center"
+            >
+              <BlogPagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
             </motion.div>
           )}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
